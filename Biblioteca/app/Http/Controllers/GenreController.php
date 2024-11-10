@@ -23,6 +23,6 @@ class GenreController extends Controller
             $booksforgenre += [$genre->title => $books];  
         }
         
-        dd($booksforgenre);
+        return view('genre', compact('booksforgenre'));
     }
 }
