@@ -21,4 +21,14 @@ class Book extends Model
     {
         return $this->belongsToMany(Editorial::class);
     }
+
+    //query scope
+
+    public function scopeTitle($query, $title)
+    {
+        if($title)
+        {
+            return $query->where('title', 'LIKE', "%$title%");
+        }
+    }
 }
