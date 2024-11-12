@@ -13,5 +13,4 @@ class BookEditorial extends Model
     {
         return $this->belongsToMany(User::class, 'book_editorial_user');
     }
-    
 }

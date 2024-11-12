@@ -12,8 +12,10 @@ class SearchController extends Controller
         $title = $request->get('title');
         $books = Book::orderBy('id', 'DESC')
                     ->title($title)
+                    ->genres($title)
+                    ->authors($title)
+                    ->editorials($title)
                     ->paginate(4);
-    
         return view('search', compact('books'));
     }
 }
