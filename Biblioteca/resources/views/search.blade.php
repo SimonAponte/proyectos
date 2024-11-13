@@ -21,19 +21,19 @@
                         </button>
                     </div>
                 </form>
-                <div class="col-md-8">
-                    <table class="table table-hover table-striped">
-                        <tbody>
-                            @foreach ($books as $book)
-                                <tr>
-                                    <td>{{$book->id}}</td>
-                                    <td>{{$book->title}}</td>
-                                </tr>
+                <ul>
+                    @foreach ($books as $book)
+                    <li>
+                        {{$book->title}}
+                        <ul>
+                            @foreach ($book->editorials as $edition)
+                                <li>Edition: {{$edition->pivot->edition_number}} | URL: <a href="http://">{{$edition->pivot->url}}</a> <a href=""><i class="fa-solid fa-comment"></i></a></li>
                             @endforeach
-                        </tbody>
-                    </table>
-                    {{ $books->links()}}
-                </div>
+                        </ul>
+                    </li>
+                    @endforeach
+                </ul>
+                {{ $books->links()}}
             </div>
         </div>
     </div>
