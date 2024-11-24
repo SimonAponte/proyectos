@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Editorial extends Model
 {
-    public function books(): BelongsToMany 
+    public function books()
     {
-        return $this->belongsToMany(Book::class)->withPivot('url', 'edition_number');
+        return $this->BelongsToMany(Book::class)->withPivot('edition_number', 'url');
     }
 }

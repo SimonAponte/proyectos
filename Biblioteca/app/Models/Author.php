@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Author extends Model
 {
-    public function books(): BelongsToMany
+    public function books()
     {
         return $this->belongsToMany(Book::class);
     }

@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Genre;
+use App\Models\Editorial;
 use Illuminate\Http\Request;
 
-class GenreController extends Controller
+class EditorialController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $genres = Genre::all();
-        return view('genre/index', compact('genres'));
+        $editorials = Editorial::all();
+        return view('editorial/index', compact('editorials'));
     }
 
     /**
@@ -21,7 +21,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        return view('genre/create');
+        return view('editorial/create');
     }
 
     /**
@@ -29,11 +29,12 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        $genre = new Genre();
-        $genre->title = $request->title;
-        $genre->description = $request->description;
-        $genre->save();
-        return redirect()->route('genres');
+        $editorial = new Editorial();
+        $editorial->name = $request->name;
+        $editorial->description = $request->description;
+        $editorial->save();
+        return redirect()->route('editorials');
+
     }
 
     /**

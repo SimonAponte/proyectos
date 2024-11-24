@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BookEditorial;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -17,9 +19,10 @@ class CommentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($edition_id)
     {
-        //
+        $users = User::all();
+        return view('comment/create', compact('users', 'edition_id'));
     }
 
     /**
@@ -27,7 +30,9 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $edition = BookEditorial::find($request->edition_id);
+
+       $edition->users()->attach($request->user, ['comment' => $request->comment]);
     }
 
     /**

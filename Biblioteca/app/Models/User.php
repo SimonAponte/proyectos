@@ -45,4 +45,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function bookEditorials()
+    {
+        return $this->belongsToMany(BookEditorial::class, 'book_editorial_user')
+                    ->withTimestamps()
+                    ->withPivot('comment');
+    }
 }
