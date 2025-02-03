@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('product_provider', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('provider_id')->constrained()->onDelete('cascade');
             $table->unsignedInteger('stock');
             $table->decimal('cost', 8, 2);
+            $table->date('purchase_date');
             $table->timestamps();
         });
     }

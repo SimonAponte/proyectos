@@ -11,7 +11,7 @@ class Product extends Model
     public function providers(): BelongsToMany
     {
 
-        return $this->belongsToMany(Provider::class)->using(ProductProvider::class)->withPivot('stock', 'cost');
+        return $this->belongsToMany(Provider::class)->using(ProductProvider::class)->withPivot('stock', 'cost', 'purchase_date', 'id');
 
     }
 
